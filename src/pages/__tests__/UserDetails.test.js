@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import UserDetails from './UserDetails';
+import UserDetails from '../UserDetails';
 
 const mockStore = configureStore([thunk]);
 

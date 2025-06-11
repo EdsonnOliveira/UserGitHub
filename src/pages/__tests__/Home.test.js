@@ -2,8 +2,8 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { configureStore } from '@reduxjs/toolkit';
-import githubReducer from '../store/githubSlice';
-import Home from './Home';
+import githubReducer from '../../store/githubSlice';
+import Home from '../Home';
 
 const createMockStore = () => {
   return configureStore({
