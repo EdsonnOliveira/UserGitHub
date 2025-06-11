@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { fetchUser } from '../store/githubSlice';
@@ -10,7 +10,7 @@ function Home() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = useCallback(async (e) => {
     e.preventDefault();
     if (username.trim()) {
       try {
@@ -20,7 +20,7 @@ function Home() {
         console.error('Erro ao buscar usuário:', error);
       }
     }
-  };
+  }, [username, dispatch, navigate]);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">

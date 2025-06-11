@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUser, fetchUserRepos } from '../store/githubSlice';
@@ -13,6 +13,10 @@ function UserDetails() {
   const { user, repos, loading, error } = useSelector((state) => state.github);
   const [sortBy, setSortBy] = useState('stars');
 
+  const handleSortChange = useCallback((e) => {
+    setSortBy(e.target.value);
+  }, [setSortBy]);
+
   useEffect(() => {
     const loadUserData = async () => {
       try {
@@ -24,10 +28,6 @@ function UserDetails() {
     };
     loadUserData();
   }, [dispatch, username, sortBy]);
-
-  const handleSortChange = (e) => {
-    setSortBy(e.target.value);
-  };
 
   if (loading) {
     return (
