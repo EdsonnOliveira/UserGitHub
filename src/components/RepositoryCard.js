@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function RepositoryCard({ repository, username }) {
@@ -24,4 +25,4 @@ function RepositoryCard({ repository, username }) {
   );
 }
 
-export default RepositoryCard; 
+export default memo(RepositoryCard); 
